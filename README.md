@@ -6,7 +6,7 @@ This project is still in "just started" phase
 
 The goal is to watch over photo directories / archive directories and detect bit rot.
 
-# the plan
+# The Plan
 
 The search recursively for all files in a number of base directories
 compute the md5 of all files
