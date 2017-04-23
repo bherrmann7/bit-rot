@@ -30,10 +30,11 @@
 #_(clojure.pprint/pprint some-files)
 #_(clojure.pprint/pprint (make-hash-list {} some-files))
 
+(defn load-latest-report []
+  (let [last-rpt-name (last (sort (filter #(.startsWith % "report-") (map str (.list (file (get-dir)))))))]
+       (load-report last-rpt-name)))
 
 ; detect dirs with identical contents.
 (defn create-hash-list []
-  (let [last-rpt-name (last (sort (filter #(.startsWith % "report-") (map str (.list (file (get-dir)))))))
-        last-rpt (load-report last-rpt-name)]
-    (make-hash-list {} last-rpt)))
+    (make-hash-list {} load-latest-report))
 
