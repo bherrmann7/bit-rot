@@ -15,32 +15,31 @@
   (read-string (slurp (str (get-dir) "/" rpt-name))))
 
 #_(let [last-rpt-name (last (sort (filter #(.startsWith % "report-") (map str (.list (file (get-dir)))))))]
-      last-rpt (load-report last-rpt-name)
-      hashes (into #{} (map second last-rpt))
-     (println last-rpt-name "last-report" (count last-rpt) (count hashes)))
+    last-rpt (load-report last-rpt-name)
+    hashes (into #{} (map second last-rpt))
+    (println last-rpt-name "last-report" (count last-rpt) (count hashes)))
 
 (defn make-hash-list [hash-list entries]
-   (if (empty? entries) hash-list
-                        (let [[path hash] (first entries)
-                               value (get hash-list hash)
-                               new-value (if value value [])]
-                            (recur (assoc hash-list hash (conj value path)) (rest entries)))))
+  (if (empty? entries) hash-list
+      (let [[path hash] (first entries)
+            value (get hash-list hash)
+            new-value (if value value [])]
+        (recur (assoc hash-list hash (conj value path)) (rest entries)))))
 
 ;(def some-files [["/a/f" "55"] ["/b" "66"] ["/d/g" "55"]])
 #_(clojure.pprint/pprint some-files)
 #_(clojure.pprint/pprint (make-hash-list {} some-files))
 
-
 ; detect dirs with identical contents.
 (def hash-list
   (let [last-rpt-name (last (sort (filter #(.startsWith % "report-") (map str (.list (file (get-dir)))))))
         last-rpt (load-report last-rpt-name)]
-       (make-hash-list {} last-rpt)))
+    (make-hash-list {} last-rpt)))
 
 #_(doseq [[hash list] hash-list]
-       (if (> (count list) 1)
-         (if (some #(.contains % "/final-export/") list)
-           (println hash (count list) (map #(.substring % (count "/Users/bob/Desktop/picture-pile/")) list)))))
+    (if (> (count list) 1)
+      (if (some #(.contains % "/final-export/") list)
+        (println hash (count list) (map #(.substring % (count "/Users/bob/Desktop/picture-pile/")) list)))))
 
 (def has-multi (filter #(> (count (second %)) 1) hash-list))
 (defn has-final-export [[hash list]]
@@ -71,7 +70,7 @@
 
 (println "total files" (count sfile))
 
-(def ffiles (map #(.getName (io/file %) ) sfile))
+(def ffiles (map #(.getName (io/file %)) sfile))
 
 (println "total names" (count ffiles))
 

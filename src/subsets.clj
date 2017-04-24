@@ -12,16 +12,15 @@
   (.toString (.getParent (io/file fstr))))
 
 (defn extract-dirs [dirs hash-entry]
-                   (reduce conj dirs (map extract-dir (second hash-entry))))
+  (reduce conj dirs (map extract-dir (second hash-entry))))
 
 (def dirs-containing-duplicates
   (reduce extract-dirs #{} has-multi))
 
-#_(doseq [ dup (sort dirs-containing-duplicates)]
-   (println dup))
+#_(doseq [dup (sort dirs-containing-duplicates)]
+    (println dup))
 
 #_(def adir (first (sort dirs-containing-duplicates)))
-
 
 (defn has-f [file hash-entry]
   (some #(= file %) (second hash-entry)))
@@ -36,7 +35,7 @@
 ;(println (find-others "/Users/bob/Desktop/picture-pile/Kokack Zi8/945EKZi8/945_0150.JPG"))
 (defn dir-has [f]
   (if (nil? f) "-"
-    (count (.listFiles (.getParentFile (io/file f))))))
+      (count (.listFiles (.getParentFile (io/file f))))))
 
 (doseq [adir (sort dirs-containing-duplicates)]
   (println adir (count (.list (io/file adir))))

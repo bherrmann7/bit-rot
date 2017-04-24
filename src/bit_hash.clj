@@ -17,7 +17,7 @@
 
 (defn gen-next-report-filename [bit-rot-dir]
   (let [date-part (.format (java.text.SimpleDateFormat. "yyyyMMdd-HHmm") (java.util.Date.))]
-       (str bit-rot-dir "/report-" date-part ".out")))
+    (str bit-rot-dir "/report-" date-part ".out")))
 
 (def rpt-out (gen-next-report-filename (get-dir)))
 

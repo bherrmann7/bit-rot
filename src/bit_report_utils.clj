@@ -21,10 +21,10 @@
 
 (defn make-hash-list [hash-list entries]
   (if (empty? entries) hash-list
-                       (let [[path hash] (first entries)
-                             value (get hash-list hash)
-                             new-value (if value value [])]
-                         (recur (assoc hash-list hash (conj value path)) (rest entries)))))
+      (let [[path hash] (first entries)
+            value (get hash-list hash)
+            new-value (if value value [])]
+        (recur (assoc hash-list hash (conj value path)) (rest entries)))))
 
 ;(def some-files [["/a/f" "55"] ["/b" "66"] ["/d/g" "55"]])
 #_(clojure.pprint/pprint some-files)
@@ -32,9 +32,9 @@
 
 (defn load-latest-report []
   (let [last-rpt-name (last (sort (filter #(.startsWith % "report-") (map str (.list (file (get-dir)))))))]
-       (load-report last-rpt-name)))
+    (load-report last-rpt-name)))
 
 ; detect dirs with identical contents.
 (defn create-hash-list []
-    (make-hash-list {} load-latest-report))
+  (make-hash-list {} load-latest-report))
 

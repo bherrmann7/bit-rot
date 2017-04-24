@@ -7,7 +7,6 @@
   (apply println message)
   (System/exit 1))
 
-
 (defn get-dir []
   (if (not (.exists (file bit-rot-dir)))
     (error "ERROR missing bit rot dir:" bit-rot-dir)
@@ -36,5 +35,4 @@
     (error "roots should be an even pairs of id and dir.\n" fmt example))
 
   roots)
-
 

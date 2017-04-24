@@ -3,5 +3,6 @@
                  [org.clojure/clojure "1.9.0-alpha14"]
                  [digest "1.4.5"]
                  [com.datomic/datomic-free "0.9.5561"]
-                 [com.draines/postal "2.0.2"]])
+                 [com.draines/postal "2.0.2"]]
+  :plugins [[lein-cljfmt "0.5.6"]])
 
