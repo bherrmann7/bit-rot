@@ -1,6 +1,6 @@
 
 
-# This is a personal project is to assist in the management of a large collection of photos.
+## This is a personal project is to assist in the management of a large collection of photos.
 
 Eventually this suite of programs should do;
 
